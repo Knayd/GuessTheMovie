@@ -30,7 +30,7 @@ public class GuessTheMovie {
         //Second load is to pick a line inside the file
 
         File file2 = new File("movies");
-        Scanner filescanner2 = new Scanner(file);
+        Scanner filescanner2 = new Scanner(file2);
 
         int i=1; //This one is to match with the randomPick
 
@@ -51,10 +51,7 @@ public class GuessTheMovie {
 
         aMovie = secretMovie.split(""); //This is the arrays that holds the actual name of the movie
 
-
-
         String[] underMovie=new String[secretMovie.length()]; //This is the array that'll hold all the _'s, those would change if the letter is right
-        System.out.println("lenght"+secretMovie.length());
 
         if(secretMovie.contains(" "))
         {
@@ -83,7 +80,6 @@ public class GuessTheMovie {
 
             String check="";
 
-
             int count=0; //a flag
             System.out.print("Guess: ");
             for (int j = 0; j < (secretMovie.length()); j++) //This is to print the array with the _'s, and will also contain the letters
@@ -91,9 +87,8 @@ public class GuessTheMovie {
                 System.out.print(underMovie[j]);
             }
 
-            for(int k=0;k<underMovie.length;k++)
-            {
-                check +=underMovie[k]; //This will make the array with the _'s an string, this is so I can compare it later
+            for (int k = 0; k < underMovie.length; k++) {
+                check += underMovie[k]; //This will make the array with the _'s an string, this is so I can compare it later
             }
             //Checks for winning
             if(check.equals(secretMovie)) //it will check if the guessed result is the same as in the secretMovie
@@ -110,7 +105,8 @@ public class GuessTheMovie {
 
             letter = read.nextLine();
 
-            for (int a = 0; a < secretMovie.length(); a++) {
+            for (int a = 0; a < secretMovie.length(); a++)
+            {
                 if (letter.equals(aMovie[a])) //compares the letter to the entire array who contains the splitted name
                 {
                     underMovie[a] = letter; //if the letter matches, it changes the _ by that letter
@@ -120,7 +116,7 @@ public class GuessTheMovie {
                 }
 
             }
-            if (count == aMovie.length && !wrongLetters.contains(letter)) //if it didnt match any letter, this will be true (also makes sure that you dont lose points by entering the same letter)
+            if (count == aMovie.length && !wrongLetters.contains(letter)) //if it didn't match any letter, this will be true (also makes sure that you don't lose points by entering the same letter twice)
             {
                 wrongLetters += " " + letter;
                 strikes += 1;
